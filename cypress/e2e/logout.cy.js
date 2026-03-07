@@ -9,7 +9,7 @@ describe('logout test', () => {
     cy.get('#login-button').click()
     cy.get('#react-burger-menu-btn').click()
     cy.contains('Logout').click()
-  cy.get('#login-button')
+     cy.get('#login-button')
 
 
 
