@@ -20,3 +20,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./cypress/screenshots
+          publish_branch: gh-pages   # <- branche cible du déploiement
