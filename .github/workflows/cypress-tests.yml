@@ -14,3 +14,9 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./cypress/screenshots
