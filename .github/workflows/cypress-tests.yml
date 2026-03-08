@@ -12,13 +12,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cypress run
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cypress/screenshots
-          publish_branch: gh-pages   # branche cible du déploiement
-          force_orphan: true         # <--- doit être ici à l’intérieur de "with"
+          publish_dir: ./deployer
+          publish_branch: gh-pages
+          force_orphan: true
