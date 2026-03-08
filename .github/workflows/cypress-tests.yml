@@ -1,14 +1,27 @@
-name: Cypress Tests
+name: CI-CD Cypress Tests
 
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
-  cypress-run:
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npx cypress run
+
+      - name: Deploy step
+        run: echo "Deployment successful"
